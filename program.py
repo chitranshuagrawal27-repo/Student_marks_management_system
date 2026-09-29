@@ -1,39 +1,19 @@
 import tkinter as tk
 from tkinter import messagebox
 
-
-# ============================================
-# DATA
-# ============================================
-
 subjects = ["Mathematics", "CSE", "ETC", "EVS"]
 
 students = []
-
-
-# ============================================
-# COLORS
-# ============================================
 
 BACKGROUND = "#DCEEFF"
 DARK_BLUE = "#1F4E78"
 BUTTON_BLUE = "#2E75B6"
 WHITE = "#FFFFFF"
 
-
-# ============================================
-# MAIN WINDOW
-# ============================================
-
 root = tk.Tk()
 root.title("Student Marks Management System")
 root.geometry("750x680")
 root.configure(bg=BACKGROUND)
-
-
-# ============================================
-# HEADING
-# ============================================
 
 title = tk.Label(
     root,
@@ -44,11 +24,6 @@ title = tk.Label(
 )
 
 title.pack(pady=20)
-
-
-# ============================================
-# STUDENT NAME
-# ============================================
 
 tk.Label(
     root,
@@ -65,11 +40,6 @@ name_entry = tk.Entry(
 )
 
 name_entry.pack(pady=5)
-
-
-# ============================================
-# MARKS INPUT
-# ============================================
 
 tk.Label(
     root,
@@ -142,11 +112,6 @@ for subject in subjects:
 
     marks_entries[subject] = (cat1, cat2, term)
 
-
-# ============================================
-# CLEAR INPUT FIELDS
-# ============================================
-
 def clear_fields():
 
     name_entry.delete(0, tk.END)
@@ -155,11 +120,6 @@ def clear_fields():
 
         for entry in marks_entries[subject]:
             entry.delete(0, tk.END)
-
-
-# ============================================
-# ADD STUDENT
-# ============================================
 
 def add_student():
 
@@ -204,8 +164,7 @@ def add_student():
                 marks_entries[subject][2].get()
             )
 
-            # Check marks
-
+            
             if not (
                 0 <= cat1 <= 100
                 and 0 <= cat2 <= 100
@@ -219,8 +178,7 @@ def add_student():
 
                 return
 
-            # Calculate final marks
-
+        
             final_marks = (
                 cat1 + cat2 + term
             ) / 3
@@ -236,9 +194,7 @@ def add_student():
                 "Final": final_marks
             }
 
-        # ====================================
-        # CALCULATE TOTAL AND AVERAGE
-        # ====================================
+        
 
         total = 0
         failed = False
@@ -268,7 +224,7 @@ def add_student():
 
             student["result"] = "PASS"
 
-        # Add student to list
+        
 
         students.append(student)
 
@@ -293,9 +249,6 @@ def add_student():
         )
 
 
-# ============================================
-# VIEW ALL STUDENTS
-# ============================================
 
 def view_students():
 
@@ -379,9 +332,6 @@ def view_students():
         )
 
 
-# ============================================
-# FIND TOPPER
-# ============================================
 
 def find_topper():
 
@@ -434,10 +384,6 @@ def find_topper():
         )
 
 
-# ============================================
-# CLASS STATISTICS
-# ============================================
-
 def class_statistics():
 
     if len(students) == 0:
@@ -489,9 +435,6 @@ def class_statistics():
     )
 
 
-# ============================================
-# FAILED STUDENTS
-# ============================================
 
 def failed_students():
 
@@ -526,9 +469,6 @@ def failed_students():
         )
 
 
-# ============================================
-# BUTTON FRAME
-# ============================================
 
 button_frame = tk.Frame(
     root,
@@ -537,10 +477,6 @@ button_frame = tk.Frame(
 
 button_frame.pack(pady=20)
 
-
-# ============================================
-# BUTTONS
-# ============================================
 
 tk.Button(
     button_frame,
@@ -638,10 +574,6 @@ tk.Button(
 )
 
 
-# ============================================
-# STUDENT COUNTER
-# ============================================
-
 counter_label = tk.Label(
     root,
     text="Students Added: 0 / 60",
@@ -651,11 +583,6 @@ counter_label = tk.Label(
 )
 
 counter_label.pack(pady=10)
-
-
-# ============================================
-# FOOTER
-# ============================================
 
 footer = tk.Label(
     root,
@@ -669,10 +596,5 @@ footer.pack(
     side="bottom",
     pady=10
 )
-
-
-# ============================================
-# START PROGRAM
-# ============================================
 
 root.mainloop()
